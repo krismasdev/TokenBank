@@ -49,9 +49,10 @@ router.post("/register", async (req, res) => {
       verificationCode,
     ])
 
-    res.status(201).json({
+    res.status(200).json({
       message: "User registered successfully",
       user: newUser.rows[0],
+      status: 200
     })
   } catch (error) {
     console.error("Registration error:", error)
@@ -131,23 +132,23 @@ router.post("/send-verification", async (req, res) => {
       expiresAt,
     ])
 
-    try {
-      await twilioClient.messages.create({
-        body: `Your verification code is: ${verificationCode}`,
-        from: process.env.TWILIO_PHONE_NUMBER,
-        to: phoneNumber
-      });
+    // try {
+    //   await twilioClient.messages.create({
+    //     body: `Your verification code is: ${verificationCode}`,
+    //     from: process.env.TWILIO_PHONE_NUMBER,
+    //     to: phoneNumber
+    //   });
       
-      res.json({ success: true });
-    } catch (error) {
-      console.error('SMS sending failed:', error);
-      res.status(500).json({ error: 'Failed to send verification code' });
-    }
+    //   res.json({ success: true });
+    // } catch (error) {
+    //   console.error('SMS sending failed:', error);
+    //   res.status(500).json({ error: 'Failed to send verification code' });
+    // }
 
     // Send SMS with the code
     // await sendSMS(phoneNumber, `Your verification code is: ${verificationCode}. It will expire in 10 minutes.`)
 
-    res.status(200).json({ message: "Verification code sent successfully" })
+    res.status(200).json({ message: "Verification code sent successfully", status: 200 })
   } catch (error) {
     console.error("Send verification error:", error)
     res.status(500).json({ message: "Failed to send verification code" })

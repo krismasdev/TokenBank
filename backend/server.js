@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
@@ -14,7 +15,6 @@ import userRoutes from "./routes/user.js"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 dotenv.config({ path: path.join(__dirname, ".env") })
-
 // Initialize Express app
 const app = express()
 const PORT = process.env.PORT || 3000
