@@ -115,6 +115,8 @@ router.post("/login", async (req, res) => {
 // Send verification code
 router.post("/send-verification", async (req, res) => {
   try {
+
+    console.log(req.body)
     const { phoneNumber } = req.body
 
     // Generate a random 6-digit code

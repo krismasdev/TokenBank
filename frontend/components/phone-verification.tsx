@@ -20,9 +20,11 @@ export function PhoneVerification() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setPhoneNumber(phone)
   
     try {
-      const response = await postUserData("send-verification", { phone });
+      const response = await postUserData("/auth/send-verification", { phoneNumber: phone });
   
       if (response?.status === 200) {
         router.push("/verify-code");

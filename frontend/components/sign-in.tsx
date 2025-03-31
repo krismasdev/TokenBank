@@ -129,7 +129,7 @@ export function SignIn() {
       </div>
 
       <div className="hidden md:flex md:w-1/2 flex-col mt-20 items-center p-6">
-        <QRCodeGenerator value={window.location.toString()} />
+        <QRCodeGenerator value={"window.location.toString()"} />
         <p className="text-sm text-white mt-10 mb-2">Scan QR code for Login</p>
         <h2 className="text-2xl font-bold text-white mb-6">Secure 2FA Login !</h2>
         <div className="flex items-center bg-[#181F28] rounded-full px-4 py-2">

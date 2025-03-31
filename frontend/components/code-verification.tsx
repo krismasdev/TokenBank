@@ -50,7 +50,7 @@ export function CodeVerification() {
     setVerificationCode(code.join(""));
 
     try {
-      const response = await postUserData("register", { username, password, email, phoneNumber, verificationCode });
+      const response = await postUserData("auth/register", { username, password, email, phoneNumber, verificationCode });
 
       if (response?.status === 200) {
         router.push("/");
